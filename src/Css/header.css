@@ -1,0 +1,100 @@
+.contenedor-header {
+    width: 90%;
+    max-width: 1200px; /* Tamaño estandar para una pagina */
+    margin: auto;
+
+    @media screen and (max-width: 768px) {
+        & { /* Colocamos "&" para que funcione en todos los navegadores */
+            width: 100%;
+            max-width: none;
+        }
+    }
+}
+
+header {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+
+    .logo {
+        display: inline-block; /* Display inline-block ya que es un enlace*/
+        background: var(--azul-secundario);
+        padding: 20px;
+        width: auto;
+        height: 70px;
+        border-radius: 10px 0px 0px 0px; /* Esq-sup-izq de 10 px, Esq-sup-der de 0 px, Esq-inf-der de 0 px, Esq-inf-izq de 0 px*/
+        position: relative; /* Elemento para el padre */
+
+        img {
+            height: 100%; /* Hacemos que la imagen sea un poco mas grande y ocupe el 100% del ancho */
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            background: var(--azul-secundario);
+            height: 20px;
+            position: absolute; /* Elemento para el hijo */
+            bottom: -20px;
+            left: 0;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            border-top: 70px solid transparent;
+            border-right: 70px solid transparent;
+            border-bottom: 72px solid var(--azul-secundario); /* Con los valores de border top, rigth y bottom hacemos un triangulo con lo inclinado del lado derecho */
+            right: -70px; /* Colocamos el triangulo -70px a la derecha - justo al lado donde termina el fondo del logo */
+            top: -70px; /* Colocamos el triangulo alineado con el fondo del logo */
+        }
+    }
+
+    .navbar {
+        display: flex;
+        gap: 30px; /* Damos una separacion en cada elemento */
+        align-items: center; /* Centramos de forma vertical con respecto al logotipo */
+        flex-wrap: wrap; /* Para responsive si los elementos ya no caben se re acomoden */
+        justify-content: center; /* Centramos los elementos de forma horizontal */
+
+        a {
+            display: inline-flex; /* tipo inline- flex para poder trabajar con flexbox pero dejando que sea tipo inline */
+            gap: 10px;
+            align-items: center; /* Alineamos el icono de descarga de forma vertical con respecto al texto */
+            font-weight: 700;
+            border-radius: 5px;
+
+            &.boton { /* Accedemos a los enlaces que esten dentro del navbar y con la clase de boton */
+                font-weight: 500;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        & {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+
+            .logo {
+                border-radius: 5px;
+                height: 60px; /* Hacemos el logo un poco mas chico */
+
+                &::before {
+                    display: none;
+                }
+
+                &::after {
+                    display: none; /* Quitamos el rectangulo que habiamos hecho */
+                }
+            }
+
+            .navbar {
+                margin-bottom: 20px; /* Agregamos un espaciado debajo del navbar */
+                padding: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,56 @@
+.footer {
+    background: var(--azul-secundario);
+    color: #fff;
+    padding: 20px;
+    border-radius: 7px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between; /* Con esto mandaos un contenido a la derecha (logo) y otro a la izquierda (enlaces) */
+    align-items: center; /* Centramos los enlaces de forma vertical con respecto a la seccion de la izquierda */
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        img {
+            width: 20vw;
+            max-width: 100px; /* Hacemos que el logo tenga un ancho maximo de 100px */
+        }
+
+        p {
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+    }
+
+    .links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap; /* Usamos esto para cuando trabajemos con dispositivos moviles si los enlaces no caben se pongan debajo */
+
+        a {
+            color: #fff;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        & {
+            flex-direction: column; /* Con esto colocamos el logo del footer arriba de su menu */
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+
+            .logo {
+                align-items: center; /* Con esto centramos el logotipo y el copyrigth */
+                order: 2; /* Invertimos el orden ahora el logo abajo */
+            }
+
+            .links {
+                justify-content: center; /* Con esto centramos los enlaces */
+                order: 1; /* Invertimos el orden ahora los links arriba */
+            }
+        }
+    }
+}
